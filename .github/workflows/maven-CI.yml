@@ -2,8 +2,10 @@ name: Maven CI/CD
 
 on:
   push:
-    branches: [ Development ]
+    branches:
+      - Development
 
+<<<<<<< HEAD
   jobs:
     test_and_build:
 
@@ -24,3 +26,22 @@ on:
 
         - name: Build project with Maven
           run: mvn -B package 
+=======
+jobs:
+  test_and_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: Test project with Maven
+        run: mvn -B test
+
+      - name: Build project with Maven
+        run: mvn -B package
+>>>>>>> 6425619dbcee4d359861e0a4f9e78689af8705e5
